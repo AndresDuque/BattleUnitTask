@@ -21,7 +21,7 @@ target_sources(MapReaderUnitTest
 target_link_libraries(MapReaderUnitTest
         PRIVATE
         gtest_main
-        tilemap
+        map_reader
         nlohmann_json::nlohmann_json)
 
 add_test(NAME MapReaderUnitTest

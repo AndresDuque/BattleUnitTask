@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-
+project(map_reader)
 include(FetchContent)
 
 message(STATUS "Fetching JSON library")
