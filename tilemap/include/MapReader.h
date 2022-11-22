@@ -12,7 +12,7 @@ private:
   void buildMap();
 
 public:
-  explicit MapReader(std::string_view json_str);
+  explicit MapReader(int map_height, int map_width, std::string_view json_str);
   std::vector<std::vector<int>> getMap();
   int getMapHeight() const;
   int getMapWidth() const;

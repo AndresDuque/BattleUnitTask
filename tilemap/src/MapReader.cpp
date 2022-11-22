@@ -3,8 +3,10 @@
 
 using json = nlohmann::json;
 
-MapReader::MapReader(std::string_view json_str) {
+MapReader::MapReader(int map_height, int map_width, std::string_view json_str) {
   m_json_str = json_str;
+  m_height = map_height;
+  m_width = map_width;
   buildMap();
 }
 

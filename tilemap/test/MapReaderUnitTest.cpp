@@ -19,7 +19,7 @@ TEST_F(MapReaderUnitTest, ReaderWorksOkay) {
   std::ifstream file(m_filename);
   json object = json::parse(file);
   std::string json_str = object.dump(4);
-  m_map_reader = std::make_shared<MapReader>(json_str);
+  m_map_reader = std::make_shared<MapReader>(64, 64, json_str);
 
   auto map = m_map_reader->getMap();
   EXPECT_EQ(map.size(), 64);
