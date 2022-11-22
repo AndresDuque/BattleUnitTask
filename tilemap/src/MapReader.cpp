@@ -1,8 +1,6 @@
 #include "MapReader.h"
 #include "nlohmann/json.hpp"
 
-#include <iostream>
-
 using json = nlohmann::json;
 
 MapReader::MapReader(std::string_view json_str) {
