@@ -7,8 +7,8 @@ class MapReader {
 private:
   std::string m_json_str;
   std::vector<std::vector<int>> m_map;
-  int m_width{};
-  int m_height{};
+  int m_width = 64;
+  int m_height = 64;
 
 public:
   explicit MapReader(std::string_view json_str);

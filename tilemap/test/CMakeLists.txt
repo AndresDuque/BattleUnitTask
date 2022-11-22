@@ -21,11 +21,12 @@ target_sources(MapReaderUnitTest
 target_link_libraries(MapReaderUnitTest
         PRIVATE
         gtest_main
-        tilemap)
+        tilemap
+        nlohmann_json::nlohmann_json)
 
 add_test(NAME MapReaderUnitTest
         COMMAND MapReaderUnitTest
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+        WORKING_DIRECTORY $<TARGET_FILE_DIR:MapReaderUnitTest>)
 
 add_custom_command(TARGET MapReaderUnitTest POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
