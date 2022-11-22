@@ -2,6 +2,7 @@
 #include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
+namespace reader{
 
 MapReader::MapReader(int map_height, int map_width, std::string_view json_str) {
   m_json_str = json_str;
@@ -27,4 +28,22 @@ void MapReader::buildMap() {
     }
     m_map.push_back(row);
   }
+}
+
+Coordinates MapReader::findPosition(int value) {
+  Coordinates coordinates{};
+  for (int i = 0; i < m_map.size(); i++) {
+    for (int j = 0; j < m_map.at(i).size(); j++) {
+      if (m_map[i][j] == value) {
+        coordinates.m_x = i;
+        coordinates.m_y = j;
+      }
+    }
+  }
+  return coordinates;
+}
+Coordinates MapReader::getInitialPosition() {
+  return findPosition(0); }
+Coordinates MapReader::getTargetedPosition() { return findPosition(6); }
+
 }
