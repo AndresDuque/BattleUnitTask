@@ -15,22 +15,22 @@ FetchContent_MakeAvailable(googletest)
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 
-add_executable(GraphUnitTest)
-target_sources(GraphUnitTest
+add_executable(AlgorithmUnitTest)
+target_sources(AlgorithmUnitTest
         PRIVATE
         AlgorithmUnitTest.cpp)
-target_link_libraries(GraphUnitTest
+target_link_libraries(AlgorithmUnitTest
         PRIVATE
         gtest_main
         map_reader
         nlohmann_json::nlohmann_json
         path_finder)
 
-add_test(NAME GraphUnitTest
-        COMMAND GraphUnitTest
-        WORKING_DIRECTORY $<TARGET_FILE_DIR:GraphUnitTest>)
+add_test(NAME AlgorithmUnitTest
+        COMMAND AlgorithmUnitTest
+        WORKING_DIRECTORY $<TARGET_FILE_DIR:AlgorithmUnitTest>)
 
-add_custom_command(TARGET GraphUnitTest POST_BUILD
+add_custom_command(TARGET AlgorithmUnitTest POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_SOURCE_DIR}/map.json"
-        $<TARGET_FILE_DIR:GraphUnitTest>)
+        $<TARGET_FILE_DIR:AlgorithmUnitTest>)

@@ -6,15 +6,15 @@
 
 using json = nlohmann::json;
 
-class GraphUnitTest : public ::testing::Test {
+class AlgorithmUnitTest : public ::testing::Test {
  protected:
   std::shared_ptr<finder::Algorithm> m_graph;
   std::string m_filename = "map.json";
   std::shared_ptr<reader::MapReader> m_map_reader;
   std::string m_json_str;
  public:
-  GraphUnitTest() = default;
-  ~GraphUnitTest() override = default;
+  AlgorithmUnitTest() = default;
+  ~AlgorithmUnitTest() override = default;
   void SetUp() override {
     std::ifstream file(m_filename);
     json object = json::parse(file);
@@ -24,7 +24,7 @@ class GraphUnitTest : public ::testing::Test {
   }
 };
 
-TEST_F(GraphUnitTest, GraphBuilderWorks) {
+TEST_F(AlgorithmUnitTest, BFSAlgorithmWorks) {
 
   auto map = m_map_reader->getMap();
   std::cout << m_graph->BFS(map,
@@ -32,7 +32,7 @@ TEST_F(GraphUnitTest, GraphBuilderWorks) {
                             {m_map_reader->getTargetedPosition().m_x, m_map_reader->getTargetedPosition().m_y});
 }
 
-TEST_F(GraphUnitTest, SmallMapTest) {
+TEST_F(AlgorithmUnitTest, SmallMapTest) {
   std::vector<std::vector<int>> test_small_map =
       {{0, -1, -1, 4, -1}, {4, -1, -1, -1, -1}, {4, -1, 4, -1, -1}, {-1, -1, -1, -1, 6}};
   std::cout << m_graph->BFS(test_small_map,

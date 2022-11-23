@@ -32,7 +32,7 @@ TEST_F(MapReaderUnitTest, ReaderWorksOkay) {
   json object = json::parse(file);
   auto data = object["layers"][0]["data"].get<std::vector<int>>();
   std::vector<int> json_vector;
-  for (auto &i : map) {
+  for (auto const &i : map) {
     for (int j : i) {
       json_vector.push_back(j);
     }
