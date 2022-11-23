@@ -34,7 +34,7 @@ TEST_F(AlgorithmUnitTest, BFSAlgorithmWorks) {
 
 TEST_F(AlgorithmUnitTest, SmallMapTest) {
   std::vector<std::vector<int>> test_small_map =
-      {{0, -1, -1, 4, -1}, {4, -1, -1, -1, -1}, {4, -1, 4, -1, -1}, {-1, -1, -1, -1, 6}};
-  std::cout << m_graph->BFS(test_small_map,
-                            {0, 0}, {static_cast<int>(test_small_map.size() - 1), static_cast<int>(test_small_map.size() - 1)});
+      {{0, -1, -1, 4, -1}, {4, -1, -1, -1, -1}, {4, -1, 4, -1, -1}, {-1, -1, -1, -1, 6}, {4, -1, -1, -1, 6}};
+  EXPECT_TRUE(m_graph->BFS(test_small_map,
+                           {0, 0}, {4, 4}));
 }

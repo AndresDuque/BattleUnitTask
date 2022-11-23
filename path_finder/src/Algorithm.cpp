@@ -1,12 +1,13 @@
+#include <iostream>
 #include "Algorithm.h"
 
 namespace finder {
 
-
-bool Algorithm::BFS(std::vector<std::vector<int>> &matrix, finder::Node source, finder::Node dest) {
+bool Algorithm::BFS(std::vector<std::vector<int>> &matrix, const Node &source, const Node &dest) const {
   std::queue<Node> bfs_queue;
   bfs_queue.push(source);
   while (!bfs_queue.empty()) {
+    std::cout << bfs_queue.size() << std::endl;
     Node node = bfs_queue.front();
     bfs_queue.pop();
     int i = node.m_x;
@@ -27,8 +28,8 @@ bool Algorithm::BFS(std::vector<std::vector<int>> &matrix, finder::Node source, 
       matrix[i][j] = 0;
 
       for (int k = -1; k <= 1; k += 2) {
-        bfs_queue.push(Node(i + k, j));
-        bfs_queue.push(Node(i, j + k));
+        bfs_queue.emplace(i + k, j);
+        bfs_queue.emplace(i, j + k);
       }
 
     }
@@ -36,6 +37,12 @@ bool Algorithm::BFS(std::vector<std::vector<int>> &matrix, finder::Node source, 
   }
   // BFS algorithm terminated without returning true
   return false;
+}
+std::vector<Node> Algorithm::AStar(std::vector<std::vector<int>> &matrix, Node source, Node dest) {
+  std::vector<Node> open_list;
+  std::vector<Node> closed_list;
+
+  return m_path;
 }
 
 }
