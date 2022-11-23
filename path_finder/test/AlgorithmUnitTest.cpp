@@ -27,14 +27,33 @@ class AlgorithmUnitTest : public ::testing::Test {
 TEST_F(AlgorithmUnitTest, BFSAlgorithmWorks) {
 
   auto map = m_map_reader->getMap();
-  std::cout << m_graph->BFS(map,
-                            {m_map_reader->getInitialPosition().m_x, m_map_reader->getInitialPosition().m_y},
-                            {m_map_reader->getTargetedPosition().m_x, m_map_reader->getTargetedPosition().m_y});
+//  std::cout << m_graph->BFS(map,
+//                            {m_map_reader->getInitialPosition().m_x, m_map_reader->getInitialPosition().m_y},
+//                            {m_map_reader->getTargetedPosition().m_x, m_map_reader->getTargetedPosition().m_y});
 }
 
 TEST_F(AlgorithmUnitTest, SmallMapTest) {
   std::vector<std::vector<int>> test_small_map =
-      {{0, -1, -1, 4, -1}, {4, -1, -1, -1, -1}, {4, -1, 4, -1, -1}, {-1, -1, -1, -1, 6}, {4, -1, -1, -1, 6}};
-  EXPECT_TRUE(m_graph->BFS(test_small_map,
-                           {0, 0}, {4, 4}));
+      {{0, -1, -1, 4, -1},
+       {4, -1, -1, -1, -1},
+       {4, -1, 4, -1, -1},
+       {-1, -1, -1, -1, 6},
+       {4, -1, -1, -1, -1}};
+  int row,col;
+  for (int i = 0; i < test_small_map.size(); ++i) {
+    for(int j = 0; j < test_small_map.at(i).size();++j){
+      if(test_small_map[i][j]==6){
+        row = i;
+        col = j;
+      }
+    }
+  }
+  finder::Node dest(row,col);
+
+
+//  EXPECT_TRUE(m_graph->BFS(test_small_map,
+//                           {0, 0}, {4, 4}));
+  std::vector<std::vector<bool>> visited = {test_small_map.size(), std::vector<bool>(5, false)};
+  bool result = m_graph->DFS(test_small_map, visited, {0, 0}, dest);
+  EXPECT_TRUE(result);
 }
