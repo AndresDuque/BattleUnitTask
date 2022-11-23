@@ -1,18 +1,26 @@
 #pragma once
 
 #include <vector>
+#include <set>
+#include <queue>
 
 namespace finder {
-using Position = std::pair<int, int>;
-using Path = std::vector<std::pair<int, int>>;
+
+struct Node {
+  int m_x;
+  int m_y;
+  Node(int x, int y) {
+    m_x = x;
+    m_y = y;
+  }
+};
 
 class Algorithm {
-  Path m_path;
-
-public:
+ private:
+  std::vector<Node> m_path;
+ public:
   Algorithm() = default;
-  void pathFinder(const std::vector<std::vector<int>> &map,
-                  Position initial_position, Position targeted_position);
+  bool BFS(std::vector<std::vector<int>> &matrix, Node source, Node dest);
 };
 
 } // namespace finder
