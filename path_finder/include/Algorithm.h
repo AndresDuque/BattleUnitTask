@@ -26,8 +26,6 @@ class Algorithm {
            const Node &dest);
   std::vector<Node> getPath() const;
 
-  void printPath(std::vector<std::vector<int>> &matrix);
-
 };
 
 } // namespace finder
