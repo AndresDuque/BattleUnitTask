@@ -15,4 +15,11 @@ target_sources(${PROJECT_NAME}
         main.cpp)
 target_link_libraries(${PROJECT_NAME}
         PRIVATE
-        map_reader)
+        map_reader
+        path_finder
+        nlohmann_json::nlohmann_json)
+
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_SOURCE_DIR}/map.json"
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>)
