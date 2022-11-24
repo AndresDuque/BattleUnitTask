@@ -24,15 +24,11 @@ class Algorithm {
   std::vector<std::vector<bool>> m_visited;
  public:
   Algorithm() = default;
-  bool BFS(std::vector<std::vector<int>> &matrix,
-           std::vector<std::vector<bool>> &visited,
-           const Node &source,
-           const Node &dest) const;
+
   bool DFS(std::vector<std::vector<int>> &matrix,
            std::vector<std::vector<bool>> &visited,
            const Node &source,
            const Node &dest) const;
-  std::vector<Node> AStar(std::vector<std::vector<int>> &matrix, const Node &source, const Node &);
 
 };
 
